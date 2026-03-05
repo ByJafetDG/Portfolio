@@ -20,6 +20,7 @@ interface ChatWindowProps {
 }
 
 export const ChatWindow: React.FC<ChatWindowProps> = ({ onInteraction, className }) => {
+    const API_BASE = import.meta.env.VITE_API_URL || '';
     const [messages, setMessages] = useState<ChatMessage[]>([WELCOME_MESSAGE]);
     const [isLoading, setIsLoading] = useState(false);
     const [lastAssistantId, setLastAssistantId] = useState<string | null>(null);
@@ -51,7 +52,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ onInteraction, className
         try {
             const controller = new AbortController();
             abortControllerRef.current = controller;
-            const res = await fetch('/api/chat', {
+            const res = await fetch(`${API_BASE}/api/chat`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: text }),

@@ -13,11 +13,12 @@ interface ExperienceItem {
 }
 
 export const Experience: React.FC = () => {
+    const API_BASE = import.meta.env.VITE_API_URL || '';
     const [experiences, setExperiences] = useState<ExperienceItem[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/admin/data')
+        fetch(`${API_BASE}/api/admin/data`)
             .then(res => res.json())
             .then(data => {
                 if (data.experiences) {

@@ -17,12 +17,13 @@ interface Certification {
 }
 
 export const Certifications: React.FC = () => {
+    const API_BASE = import.meta.env.VITE_API_URL || '';
     const [education, setEducation] = useState<Education[]>([]);
     const [certifications, setCertifications] = useState<Certification[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/admin/data')
+        fetch(`${API_BASE}/api/admin/data`)
             .then(res => res.json())
             .then(data => {
                 if (data.education) setEducation(data.education);

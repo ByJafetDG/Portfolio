@@ -9,9 +9,15 @@ const PORT = parseInt(process.env.PORT || '3001', 10);
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000'],
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'https://jafetduarte.dev',
+        'https://www.jafetduarte.dev',
+        /\.vercel\.app$/ // Matches any vercel preview deployment
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'x-admin-key'],
+    allowedHeaders: ['Content-Type', 'x-admin-token'],
 }));
 app.use(express.json());
 

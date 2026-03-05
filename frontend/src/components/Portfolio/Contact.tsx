@@ -10,11 +10,12 @@ interface Profile {
 }
 
 export const Contact: React.FC = () => {
+    const API_BASE = import.meta.env.VITE_API_URL || '';
     const [profile, setProfile] = useState<Profile | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/admin/data')
+        fetch(`${API_BASE}/api/admin/data`)
             .then(res => res.json())
             .then(data => {
                 if (data.profile) setProfile(data.profile);

@@ -32,6 +32,7 @@ function getInitials(name: string): string {
 }
 
 export const Testimonials: React.FC = () => {
+    const API_BASE = import.meta.env.VITE_API_URL || '';
     const [testimonials, setTestimonials] = useState<TestimonialData[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
@@ -96,7 +97,7 @@ export const Testimonials: React.FC = () => {
 
     const fetchTestimonials = async () => {
         try {
-            const res = await fetch('/api/admin/testimonials');
+            const res = await fetch(`${API_BASE}/api/admin/testimonials`);
             if (res.ok) {
                 const data = await res.json();
                 setTestimonials(data);
@@ -111,7 +112,7 @@ export const Testimonials: React.FC = () => {
         if (!formData.name || !formData.company || !formData.message) return;
         setSubmitting(true);
         try {
-            const res = await fetch('/api/admin/testimonial', {
+            const res = await fetch(`${API_BASE}/api/admin/testimonial`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
