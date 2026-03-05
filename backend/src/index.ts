@@ -14,7 +14,8 @@ app.use(cors({
         'http://localhost:3000',
         'https://jafetduarte.dev',
         'https://www.jafetduarte.dev',
-        /\.vercel\.app$/ // Matches any vercel preview deployment
+        /\.vercel\.app$/, // Matches any vercel preview deployment
+        /\.netlify\.app$/ // Matches any netlify preview deployment
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'x-admin-token'],
