@@ -32,7 +32,8 @@ app.get('/api/health', (_req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`🚀 Backend server running on http://localhost:${PORT}`);
-    console.log(`📡 Chat endpoint: POST http://localhost:${PORT}/api/chat`);
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST, () => {
+    console.log(`🚀 Backend server running on http://${HOST}:${PORT}`);
+    console.log(`📡 Chat endpoint: POST http://${HOST}:${PORT}/api/chat`);
 });
