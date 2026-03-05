@@ -1,0 +1,31 @@
+{
+    "name": "jafet-portfolio-backend",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch src/index.ts",
+        "start": "node dist/index.js",
+        "build": "tsc",
+        "db:generate": "prisma generate",
+        "db:push": "prisma db push",
+        "db:seed": "tsx prisma/seed.ts"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.0.0",
+        "@types/bcryptjs": "^3.0.0",
+        "bcryptjs": "^3.0.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.0",
+        "express": "^4.21.0",
+        "groq-sdk": "^0.8.0"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.17",
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.0.0",
+        "prisma": "^6.0.0",
+        "tsx": "^4.19.0",
+        "typescript": "~5.7.2"
+    }
+}

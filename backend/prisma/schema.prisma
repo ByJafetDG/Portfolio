@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Profile {
+  id       Int    @id @default(autoincrement())
+  name     String
+  title    String
+  summary  String
+  email    String
+  phone    String
+  location String
+  linkedin String
+  english  String
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  company     String
+  role        String
+  location    String
+  startDate   String   @map("start_date")
+  endDate     String   @map("end_date")
+  description String[]
+}
+
+model Education {
+  id     Int    @id @default(autoincrement())
+  degree String
+  school String
+  period String
+}
+
+model Skill {
+  id       Int      @id @default(autoincrement())
+  category String
+  items    String[]
+}
+
+model Certification {
+  id     Int    @id @default(autoincrement())
+  name   String
+  issuer String
+  year   String
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String
+  technologies String[]
+  highlights   String[]
+}
+
+model Trivia {
+  id       Int    @id @default(autoincrement())
+  category String
+  content  String
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  name      String
+  company   String
+  rating    Int
+  message   String
+  createdAt DateTime @default(now()) @map("created_at")
+}
